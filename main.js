@@ -36,6 +36,7 @@ $(document).ready(function() {
 			headers: {'X-Username': user, 'X-Api-Key': key}
 		}
 	).done(function (data, status) { 
+
 		$('body').css("background-color", "#42f468");
 		$("#status-header").append("<h2> Success </h2>");
 		$("#status-msg").append('Part successfully transferred to vehicle. Transfer successfully recorded on Public Vehicle Blockchain:');
@@ -57,10 +58,6 @@ $(document).ready(function() {
 			$("#success-panel").append("<p> vehicleID: " + vehicleID + "</p>");
 			$("#success-panel").append("<p> partID: " + partID + "</p>");
 			$("#success-panel").append("<p> timestamp: " + Date.now().toString() + "</p>");
-
-
-
-
 		}); 
 
 
@@ -72,8 +69,18 @@ $(document).ready(function() {
 		console.log(errorThrown);
 
 		$('body').css("background-color", "#e53d49");
-		$('.panel').hide();
 
+		$("#status-header").append("<h2> Failure </h2>");
+		$("#status-msg").append('Part is not authentic. Following information of attempted install of part sent to relevant parties: ');
+
+		$("#success-panel").append("<p> vehicleID: " + vehicleID + "</p>");
+		$("#success-panel").append("<p> timestamp: " + Date.now().toString() + "</p>");
+
+
+		$("#authorities-header").append("<h2> Authorities informed: </h2>");
+		$("#auth").append("<p> Car owner </p>");
+		$("#auth").append("<p> Car manufacturer: Ford Motor Company </p>");
+		$("#auth").append("<p> Car insurance company: Metromile </p>");
 		
 	});
 
