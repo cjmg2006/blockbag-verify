@@ -42,6 +42,17 @@ $(document).ready(function() {
 			console.log("need to recall"); 
 			$('body').css("background-color", "#fff375");
 
+			$("#status-header").append("<h2> Notification of Recall </h2>");
+			$("#status-msg").append('Malfunctions detected in part ' + partID + '. Please bring your car to the nearest dealer as soon as possible.');
+
+			$('.info').hide();
+
+			$("#authorities-header").append("<h3> Details of recall: </h3>");
+			$("#auth").append("<p> Time issued: " + Date.now().toString() + " </p>");
+			$("#auth").append("<p> Car manufacturer: XYZ </p>");
+			$("#auth").append("<p> Link to announcement: <a href= 'http://toyotanews.pressroom.toyota.com/releases/toyota+recall+2016+2017+tacoma+june1.htm'> Website </a>  </p>");
+
+
 		} else { 
 			console.log("no need to recall"); 
 			$('body').css("background-color", "#42f468");
