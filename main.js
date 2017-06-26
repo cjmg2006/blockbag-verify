@@ -24,6 +24,7 @@ $(document).ready(function() {
 
 	partID = getUrlParameter('partID');
 	vehicleID = getUrlParameter('vehicleID');
+	recall = getUrlParameter('recall'); 
 
 	$("#partID").append('Part ID: ' + partID);
 
@@ -37,30 +38,37 @@ $(document).ready(function() {
 		}
 	).done(function (data, status) { 
 
-		$('body').css("background-color", "#42f468");
-		$("#status-header").append("<h2> Success </h2>");
-		$("#status-msg").append('Part successfully transferred to vehicle. Transfer successfully recorded on Public Vehicle Blockchain:');
+		if(recall == 'yes') { 
+			console.log("need to recall"); 
+			$('body').css("background-color", "#fff375");
 
-		// Post onto the blockchain  
-		$.ajax({ 
-			type: "POST", 
-			url: "https://api.tierion.com/v1/records",
-			data: {	'vehicleID': vehicleID, 
-					'partID': partID, 
-					'timestamp': Date.now(),
-					"datastoreId": 1742
-				  }, 
-			headers: {'X-Username': user, 'X-Api-Key': key} 
-		})
-		.done(function(data, status) { 
+		} else { 
+			console.log("no need to recall"); 
+			$('body').css("background-color", "#42f468");
+			$('#auth').hide();
+			$("#status-header").append("<h2> Success </h2>");
+			$("#status-msg").append('Part successfully transferred to vehicle. Transfer successfully recorded on Public Vehicle Blockchain:');
 
-			// Update info 
-			$("#success-panel").append("<p> vehicleID: " + vehicleID + "</p>");
-			$("#success-panel").append("<p> partID: " + partID + "</p>");
-			$("#success-panel").append("<p> timestamp: " + Date.now().toString() + "</p>");
-		}); 
+			// Post onto the blockchain  
+			$.ajax({ 
+				type: "POST", 
+				url: "https://api.tierion.com/v1/records",
+				data: {	'vehicleID': vehicleID, 
+						'partID': partID, 
+						'timestamp': Date.now(),
+						"datastoreId": 1742
+					  }, 
+				headers: {'X-Username': user, 'X-Api-Key': key} 
+			})
+			.done(function(data, status) { 
 
+				// Update info 
+				$("#success-panel").append("<p> vehicleID: " + vehicleID + "</p>");
+				$("#success-panel").append("<p> partID: " + partID + "</p>");
+				$("#success-panel").append("<p> timestamp: " + Date.now().toString() + "</p>");
+			}); 
 
+		}
 
 	})
 
