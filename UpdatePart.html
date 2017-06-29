@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Update Part</title>
+    <style>
+      form {
+        /* Just to center the form on the page */
+        margin: 0 auto;
+        width: 600px;
+        /* To see the outline of the form */
+        padding: 1em;
+        border: 1px solid #CCC;
+        border-radius: 1em;
+      }
+      form div + div {
+        margin-top: 1em;
+      }
+      label {
+        /* To make sure that all labels have the same size and are properly aligned */
+        display: inline-block;
+        width: 150px;
+        text-align: right;
+      }
+      input, textarea {
+        /* To make sure that all text fields have the same font settings By default, textareas have a monospace font */
+        font: 1em sans-serif;
+        /* To give the same size to all text fields */
+        width: 400px;
+        box-sizing: border-box; /* To harmonize the look & feel of text field border */
+        border: 1px solid #999;
+      }
+      input:focus, textarea:focus {
+        /* To give a little highlight on active elements */
+        border-color: #000;
+      }
+      textarea {
+        /* To properly align multiline text fields with their labels */
+        vertical-align: top;
+        /* To give enough room to type some text */
+        height: 5em;
+      }
+      .button {
+        /* To position the buttons to the same position of the text fields */
+        padding-left: 90px;
+        /* same size as the label elements */
+      }
+      button {
+        /* This extra margin represent roughly the same space as the space between the labels and their text fields */
+        margin-left: .5em;
+      }
+    </style>
+</head>
+<body>
+<form method="post" action="https://tierion.com/form/submit">
+    <input name="_key" type="hidden" value="suZR-ToQF0mo7Ya6n_OckA">
+    <div>
+        <label text="inflatorID"> Name:</label>
+        <input name="inflatorID" type="text" value="f5340d3d-745d-4082-ae73-2625c809c856">
+    </div>
+    <div>
+        <label> MaterialID:</label>
+         <input name="materialID" type="text" value="f37b0a61-f12a-46b1-8d9b-c9bb249c43e5">
+     </div>
+     <div>    
+        <label> BatchID:</label>
+        <input name="batchID" type="text" value="1">
+    </div>
+    <div>    
+        <label> AirBagID:</label>
+        <input name="airbagID" type="text" value="100">
+    </div>
+    <div>
+        <label> ManufacturerID:</label>
+        <input name="ManufacturerID" type="text"value="M12345" >
+    </div>
+    <div>    
+        <label> CoverID:</label>
+        <input name="coverID" type="text" value="77783864-8178-4edb-843a-b5bc01df4803">
+    </div>
+    <div>
+        <label> New Status:</label>
+        <input name="status" type="text" value="recalled">
+    <div>   
+    <div>
+        <label> Previous Data ID:</label>
+        <input name="dataID" type="text" value="">
+    <div>    
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
