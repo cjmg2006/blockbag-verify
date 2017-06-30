@@ -2,7 +2,7 @@
 
 var vehicleID = 60
 var partID = 'P24S44pZ30yJZuYpr4EB5A'
-var urlPrefix = "http://52.53.164.50:8081/updatepart?partID=P24S44pZ30yJZuYpr4EB5A&vehicleID=60&status="
+// var urlPrefix = "http://52.53.164.50:8081/updatepart?partID=P24S44pZ30yJZuYpr4EB5A&vehicleID=60&status="
 var user = 'cjmg2006@gmail.com';
 var key = 'DiMw7Lp4WmuAK0cxMKxRLwQUlnaZEhmNBJ6LancuWuo=';
 
@@ -30,12 +30,12 @@ $(document).ready(function(){
 	var stat = getUrlParameter('status'); 
 	console.log(stat); 
 	
-	var url = urlPrefix + stat; 
+	// var url = urlPrefix + stat; 
 	if(stat == 'Retired') {
 	// send to server 
 		$.ajax({ 
-				type: "GET", 
-				url: url,
+				type: "POST", 
+				url: "https://api.tierion.com/v1/records",
 				data: {	'vehicleID': vehicleID, 
 						'partID': partID, 
 						'status': stat,
@@ -56,8 +56,8 @@ $(document).ready(function(){
 	
 	} else if (stat == 'Installed') { 
 		$.ajax({ 
-				type: "GET", 
-				url: url,
+				type: "POST", 
+				url: "https://api.tierion.com/v1/records",
 				data: {	'vehicleID': vehicleID, 
 						'partID': partID, 
 						'status': stat,
