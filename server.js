@@ -127,7 +127,7 @@ app.get('/listUsers', function (req, res) {
    });
 })
 
-app.post('/updatepart', function (req, res) {
+app.get('/updatepart', function (req, res) {
    // Prepare output in JSON format
 	response=updateBlockChainData (req.query.partID,req.query.vehicleID,req.query.status);
    res.end(JSON.stringify(response));
