@@ -48,7 +48,7 @@ $(document).ready(function(){
 			console.log(stat == 'Retired');
 			 	
 			$('body').css("background-color", "#fff375");
-			$(".part-status").append("<h2> Part successfully retired </h2>");
+			$(".part-status").append("<h2> Part successfully installed </h2>");
 			$(".part-msg").append("<p> The public vehicle record has been successfully updated. </p>");
 			 
 		
