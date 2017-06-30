@@ -20,7 +20,10 @@
 <script>
 
 
-var service = 'http://127.0.0.1:8081/getparts?status=Installed';
+var service = 'http://52.53.164.50:8081/getparts?status=Installed';
+// var service1 = 'http://127.0.0.1:8081/updateparts?status=Installed';
+
+// var service = 'http://52.53.164.50:8081/updatepart?'
 
 $(document).ready(function(){
 
@@ -38,11 +41,11 @@ $(document).ready(function(){
             
         var trHTML = '';
                 
-        $.each(data.records, function (i, item) {
+       //  $.each(data.records, function (i, item) {
             
-            trHTML += '<tr><td>' + data.records[i].id + '</td><td>' + data.records[i].timestamp + '</td><td>'+'<input type="text" value="1">'+ '</td></tr>';
-       //     trHTML += '<tr><td>' + 'whatever' + '</td><td>' + 'come on' + '</td></tr>';
-        });
+       //      trHTML += '<tr><td>' + data.records[i].id + '</td><td>' + data.records[i].timestamp + '</td><td>'+'<input type="text" value="1">'+ '</td></tr>';
+       // //     trHTML += '<tr><td>' + 'whatever' + '</td><td>' + 'come on' + '</td></tr>';
+       //  });
         
         $('#location').append(trHTML);
         
