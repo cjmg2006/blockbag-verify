@@ -4,7 +4,58 @@ var http = require('http');
 var app = express();
 var fs = require("fs");
 
-function getBlockChainData (part_in,vehicle_in,status_in) {
+function getBlockChainData (status_in) {
+	var tierionurl="https://api.tierion.com/v1/records?datastoreId=";
+	var method = "GET";
+	var request = new XMLHttpRequest(); 
+
+	var user = 'cjmg2006@gmail.com';
+	var key = 'DiMw7Lp4WmuAK0cxMKxRLwQUlnaZEhmNBJ6LancuWuo=';
+	var logStr;
+	var data;
+	switch(status_in) {
+    case 'Installed':
+        tierionurl = tierionurl+"1742";
+        logStr="Getting Installed parts";  
+        break;
+    case "Retired":
+        tierionurl = tierionurl+"1777";
+        logStr="Gettting Retired parts";
+        break;
+    case "Recalled":
+        tierionurl = tierionurl+"1778";
+        logStr="Gettting Retired parts";
+        break;
+    default:
+        tierionurl = tierionurl + "1738";
+        logStr="Getting parts in stock";
+	}
+	console.log(logStr);
+	request.open(method, tierionurl, false);
+
+	console.log( "got here 1" );
+	
+	request.onload = function () {
+   	var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
+   	console.log(status);
+   	data = request.responseText; // Returned data, e.g., an HTML document.
+	}
+	
+	console.log( "got here 2" );
+//	request.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+//	request.setRequestHeader("Content-Length", payload.length);
+	request.setRequestHeader('X-Username', user);
+	request.setRequestHeader('X-Api-Key',key);
+	request.send();
+	  	
+	console.log( "got here 2" );
+
+	console.log( "got here 3" );
+	console.log(data);
+	return data;
+}
+
+function updateBlockChainData (part_in,vehicle_in,status_in) {
 	var tierionurl="https://api.tierion.com/v1/records";
 	var method = "POST";
 
@@ -76,14 +127,15 @@ app.get('/listUsers', function (req, res) {
    });
 })
 
-app.get('/updatepart', function (req, res) {
+app.post('/updatepart', function (req, res) {
    // Prepare output in JSON format
-   response = {
-     partID: req.query.partID,
-      vehicleID: req.query.vehicleID,
-      status: req.query.status
-   };
-	response=getBlockChainData (req.query.partID,req.query.vehicleID,req.query.status);
+	response=updateBlockChainData (req.query.partID,req.query.vehicleID,req.query.status);
+   res.end(JSON.stringify(response));
+})
+
+app.get('/getparts', function (req, res) {
+   // Prepare output in JSON format
+	response=getBlockChainData (req.query.status);
    res.end(JSON.stringify(response));
 })
  
