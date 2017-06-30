@@ -23,11 +23,11 @@ $(document).ready(function(){
     jQuery.support.cors = true;
 
 
-	status = getUrlParameter('status'); 
-	console.log(status); 
+	var stat = getUrlParameter('status'); 
+	console.log(stat); 
 
 	
-	var url = urlPrefix + status; 
+	var url = urlPrefix + stat; 
 
 	// send to server 
 	$.ajax({ 
@@ -41,12 +41,15 @@ $(document).ready(function(){
 			// headers: {'X-Username': user, 'X-Api-Key': key} 
 	})
 	.done(function(data, status) {
-		if(status == 'Retired') { 
-			console.log(status == 'Retired');
+		console.log('done');
+		console.log(stat == 'Retired');
+		if(stat == 'Retired') { 
+			console.log("hello");
+			
 			$('body').css("background-color", "#fff375");
 			$(".part-status").append("<h2> Part successfully retired </h2>");
 			$(".part-msg").append("<p> The public vehicle record has been successfully updated. </p>");
-		} else if (status == 'Installed') { 
+		} else if (stat == 'Installed') { 
 			$('body').css("background-color", "#42f468");
 			$(".part-status").append("<h2> Part successfully installed </h2>");
 			$(".part-msg").append("<p> The public vehicle record has been successfully updated. </p>");
