@@ -136,7 +136,8 @@ app.post('/updatepart', function (req, res) {
 app.get('/getparts', function (req, res) {
    // Prepare output in JSON format
 	response=getBlockChainData (req.query.status);
-   res.end(JSON.stringify(response));
+ //  res.end(JSON.stringify(response));
+ 	res.end(response);
 })
  
 	
