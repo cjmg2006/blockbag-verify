@@ -41,11 +41,12 @@ $(document).ready(function(){
 			// headers: {'X-Username': user, 'X-Api-Key': key} 
 	})
 	.done(function(data, status) {
-		if(status === 'Retired') { 
+		if(status == 'Retired') { 
+			console.log(status == 'Retired');
 			$('body').css("background-color", "#fff375");
 			$(".part-status").append("<h2> Part successfully retired </h2>");
 			$(".part-msg").append("<p> The public vehicle record has been successfully updated. </p>");
-		} else if (status === 'Installed') { 
+		} else if (status == 'Installed') { 
 			$('body').css("background-color", "#42f468");
 			$(".part-status").append("<h2> Part successfully installed </h2>");
 			$(".part-msg").append("<p> The public vehicle record has been successfully updated. </p>");
